@@ -1,0 +1,17 @@
+/*
+ * myBiblioteca.h
+ *
+ *  Created on: May 15, 2021
+ *      Author: Jonatan Barbuto
+ */
+
+#ifndef MYBIBLIOTECA_H_
+#define MYBIBLIOTECA_H_
+
+int Get_Number(char mjs[], char error_msj[], int min, int max, int retries);
+
+
+
+
+
+#endif /* MYBIBLIOTECA_H_ */

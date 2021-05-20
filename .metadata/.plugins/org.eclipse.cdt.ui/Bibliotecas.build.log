@@ -1,0 +1,80 @@
+09:46:39 **** Rebuild of configuration Debug for project Bibliotecas ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Bibliotecas.o" "..\\src\\Bibliotecas.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\ModeloPP.o" "..\\src\\ModeloPP.c" 
+..\src\ModeloPP.c: In function 'main':
+..\src\ModeloPP.c:26:3: warning: implicit declaration of function 'Menu' [-Wimplicit-function-declaration]
+   Menu();
+   ^~~~
+..\src\ModeloPP.c:27:9: warning: implicit declaration of function 'Get_IntRange' [-Wimplicit-function-declaration]
+   opc = Get_IntRange("INGRESE OPCION: ", "ERROR. REINGRESE: ", 1, 4);
+         ^~~~~~~~~~~~
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Biblioteca.o" "..\\src\\Biblioteca.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Entidades.o" "..\\src\\Entidades.c" 
+..\src\Entidades.c: In function 'eMusicoOrquesta_Alta':
+..\src\Entidades.c:19:16: warning: implicit declaration of function 'Get_Int' [-Wimplicit-function-declaration]
+   idOrquesta = Get_Int("SELECCIONE ID DE ORQUESTA DE MUSICO: ",
+                ^~~~~~~
+..\src\Entidades.c:33:7: warning: implicit declaration of function 'Validate_Exit_SN' [-Wimplicit-function-declaration]
+   if (Validate_Exit_SN("CONTINUAR SI[S] - NO[N]: ",
+       ^~~~~~~~~~~~~~~~
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Orquesta.o" "..\\src\\Orquesta.c" 
+..\src\Orquesta.c: In function 'eOrquesta_CargarDatos':
+..\src\Orquesta.c:130:2: warning: implicit declaration of function 'Get_OnlyAlphabetStringWithSpaces' [-Wimplicit-function-declaration]
+  Get_OnlyAlphabetStringWithSpaces("INGRESE NOMBRE: ", "ERROR. REINGRESE: ",
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+..\src\Orquesta.c:132:2: warning: implicit declaration of function 'Get_String' [-Wimplicit-function-declaration]
+  Get_String("INGRESE LUGAR: ", "ERROR. REINGRESE: ", auxiliar.lugar,
+  ^~~~~~~~~~
+..\src\Orquesta.c:134:23: warning: implicit declaration of function 'Get_IntRange' [-Wimplicit-function-declaration]
+  auxiliar.fecha.dia = Get_IntRange("INGRESE DIA: ", "ERROR. REINGRESE: ", 1,
+                       ^~~~~~~~~~~~
+..\src\Orquesta.c: In function 'eOrquesta_Alta':
+..\src\Orquesta.c:185:7: warning: implicit declaration of function 'Validate_Exit_SN' [-Wimplicit-function-declaration]
+   if (Validate_Exit_SN("DESEA CONTINUAR SI[S] - NO[N]: ",
+       ^~~~~~~~~~~~~~~~
+..\src\Orquesta.c: In function 'eOrquesta_Baja':
+..\src\Orquesta.c:214:16: warning: implicit declaration of function 'Get_IntPositive' [-Wimplicit-function-declaration]
+   idOrquesta = Get_IntPositive("INGRESE ID A DAR DE BAJA: ",
+                ^~~~~~~~~~~~~~~
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Instrumento.o" "..\\src\\Instrumento.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Musico.o" "..\\src\\Musico.c" 
+..\src\Musico.c: In function 'eMusico_CargarDatos':
+..\src\Musico.c:124:2: warning: implicit declaration of function 'Get_OnlyAlphabetStringWithSpaces' [-Wimplicit-function-declaration]
+  Get_OnlyAlphabetStringWithSpaces("INGRESE NOMBRE: ", "ERROR. REINGRESE: ", auxiliar.nombre, MAX_CHARS_CADENAS);
+  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+..\src\Musico.c:126:18: warning: implicit declaration of function 'Get_IntRange' [-Wimplicit-function-declaration]
+  auxiliar.edad = Get_IntRange("INGRESE EDAD: ", "ERROR. REINGRESE: ", 1, 100);
+                  ^~~~~~~~~~~~
+gcc -o Bibliotecas.exe "src\\Biblioteca.o" "src\\Bibliotecas.o" "src\\Entidades.o" "src\\Instrumento.o" "src\\ModeloPP.o" "src\\Musico.o" "src\\Orquesta.o" 
+src\ModeloPP.o: In function `main':
+C:\Users\jonat\Documents\UTN\Programacion_1_UTN\Bibliotecas\Debug/../src/ModeloPP.c:7: multiple definition of `main'
+src\Bibliotecas.o:C:\Users\jonat\Documents\UTN\Programacion_1_UTN\Bibliotecas\Debug/../src/Bibliotecas.c:14: first defined here
+src\Entidades.o: In function `eMusicoOrquesta_Alta':
+C:\Users\jonat\Documents\UTN\Programacion_1_UTN\Bibliotecas\Debug/../src/Entidades.c:19: undefined reference to `Get_Int'
+C:\Users\jonat\Documents\UTN\Programacion_1_UTN\Bibliotecas\Debug/../src/Entidades.c:24: undefined reference to `Get_Int'
+C:\Users\jonat\Documents\UTN\Programacion_1_UTN\Bibliotecas\Debug/../src/Entidades.c:33: undefined reference to `Validate_Exit_SN'
+src\ModeloPP.o: In function `main':
+C:\Users\jonat\Documents\UTN\Programacion_1_UTN\Bibliotecas\Debug/../src/ModeloPP.c:26: undefined reference to `Menu'
+C:\Users\jonat\Documents\UTN\Programacion_1_UTN\Bibliotecas\Debug/../src/ModeloPP.c:27: undefined reference to `Get_IntRange'
+src\Musico.o: In function `eMusico_CargarDatos':
+C:\Users\jonat\Documents\UTN\Programacion_1_UTN\Bibliotecas\Debug/../src/Musico.c:124: undefined reference to `Get_OnlyAlphabetStringWithSpaces'
+C:\Users\jonat\Documents\UTN\Programacion_1_UTN\Bibliotecas\Debug/../src/Musico.c:125: undefined reference to `Get_OnlyAlphabetStringWithSpaces'
+C:\Users\jonat\Documents\UTN\Programacion_1_UTN\Bibliotecas\Debug/../src/Musico.c:126: undefined reference to `Get_IntRange'
+src\Orquesta.o: In function `eOrquesta_CargarDatos':
+C:\Users\jonat\Documents\UTN\Programacion_1_UTN\Bibliotecas\Debug/../src/Orquesta.c:130: undefined reference to `Get_OnlyAlphabetStringWithSpaces'
+C:\Users\jonat\Documents\UTN\Programacion_1_UTN\Bibliotecas\Debug/../src/Orquesta.c:132: undefined reference to `Get_String'
+C:\Users\jonat\Documents\UTN\Programacion_1_UTN\Bibliotecas\Debug/../src/Orquesta.c:134: undefined reference to `Get_IntRange'
+C:\Users\jonat\Documents\UTN\Programacion_1_UTN\Bibliotecas\Debug/../src/Orquesta.c:136: undefined reference to `Get_IntRange'
+C:\Users\jonat\Documents\UTN\Programacion_1_UTN\Bibliotecas\Debug/../src/Orquesta.c:138: undefined reference to `Get_IntRange'
+C:\Users\jonat\Documents\UTN\Programacion_1_UTN\Bibliotecas\Debug/../src/Orquesta.c:143: undefined reference to `Get_IntRange'
+src\Orquesta.o: In function `eOrquesta_Alta':
+C:\Users\jonat\Documents\UTN\Programacion_1_UTN\Bibliotecas\Debug/../src/Orquesta.c:185: undefined reference to `Validate_Exit_SN'
+src\Orquesta.o: In function `eOrquesta_Baja':
+C:\Users\jonat\Documents\UTN\Programacion_1_UTN\Bibliotecas\Debug/../src/Orquesta.c:214: undefined reference to `Get_IntPositive'
+C:\Users\jonat\Documents\UTN\Programacion_1_UTN\Bibliotecas\Debug/../src/Orquesta.c:221: undefined reference to `Get_IntPositive'
+C:\Users\jonat\Documents\UTN\Programacion_1_UTN\Bibliotecas\Debug/../src/Orquesta.c:228: undefined reference to `Validate_Exit_SN'
+collect2.exe: error: ld returned 1 exit status
+
+09:46:41 Build Failed. 20 errors, 11 warnings. (took 1s.787ms)
+

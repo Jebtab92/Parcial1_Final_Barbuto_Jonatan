@@ -1,0 +1,17 @@
+/*
+ * Contribuyente.h
+ *
+ *  Created on: May 15, 2021
+ *      Author: Jonatan Barbuto
+ */
+
+#ifndef CONTRIBUYENTE_H_
+#define CONTRIBUYENTE_H_
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
+
+#endif /* CONTRIBUYENTE_H_ */

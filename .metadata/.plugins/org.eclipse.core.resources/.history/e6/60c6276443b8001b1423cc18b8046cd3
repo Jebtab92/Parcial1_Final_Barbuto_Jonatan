@@ -1,0 +1,24 @@
+/*
+ * Informes.c
+ *
+ *  Created on: May 18, 2021
+ *      Author: jonat
+ */
+
+#include "Informes.h"
+
+eRecaudacion cargarDatosRecaudacion(eRecaudacion arrayR[], int sizeR, eContribuyente arrayC[], int sizeC)
+{
+	eRecaudacion auxiliar;
+	int auxId;
+
+	auxId = Get_IntRange("\nIngrese id del contribuyente para la nueva recaudacion --> ", "\nError, reingrese", 1000, 1100, 3);
+
+	do
+	{
+		buscarIdContribuyente(arrayC, sizeC, auxId);
+	}while
+
+
+	return auxiliar;
+}

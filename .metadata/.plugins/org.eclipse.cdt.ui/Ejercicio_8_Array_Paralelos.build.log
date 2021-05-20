@@ -1,0 +1,8 @@
+21:21:06 **** Incremental Build of configuration Debug for project Ejercicio_8_Array_Paralelos ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Ejercicio_8_Array_Paralelos.o" "..\\src\\Ejercicio_8_Array_Paralelos.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Ejercicio_8.o" "..\\src\\Ejercicio_8.c" 
+gcc -o Ejercicio_8_Array_Paralelos.exe "src\\Ejercicio_8.o" "src\\Ejercicio_8_Array_Paralelos.o" 
+
+21:21:07 Build Finished. 0 errors, 0 warnings. (took 778ms)
+

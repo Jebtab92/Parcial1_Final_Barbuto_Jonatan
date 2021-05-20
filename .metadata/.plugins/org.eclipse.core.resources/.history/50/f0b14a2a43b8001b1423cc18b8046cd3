@@ -1,0 +1,17 @@
+/*
+ * Informes.c
+ *
+ *  Created on: May 18, 2021
+ *      Author: jonat
+ */
+
+#include "Informes.h"
+
+eRecaudacion cargarDatosRecaudacion(eRecaudacion arrayR[], int sizeR, eContribuyente arrayC[], int sizeC)
+{
+	eRecaudacion auxiliar;
+
+
+
+	return auxiliar;
+}

@@ -1,0 +1,28 @@
+/*
+ * Contribuyente.h
+ *
+ *  Created on: May 15, 2021
+ *      Author: Jonatan Barbuto
+ */
+
+#ifndef CONTRIBUYENTE_H_
+#define CONTRIBUYENTE_H_
+#define MAX_CHAR 30
+
+typedef struct
+{
+	int idContribuyente;
+	char nombre[MAX_CHAR];
+	char apellido[MAX_CHAR];
+	char cuil[MAX_CHAR];
+	int isEmpty;
+} eContribuyente;
+
+void initArrayContribuyente(eContribuyente array[], int size);
+int arrayEmptyContribuyente(eContribuyente array[], int size);
+int searchEmptyContribuyente(eContribuyente array[], int *pEmpty, int size);
+int getDownContribuyente(eContribuyente array[], int size);
+void showContribuyente(eContribuyente array[], int index);
+int eContribuyente_BuscarPorID(eContribuyente array[], int size, int ID);
+
+#endif /* CONTRIBUYENTE_H_ */

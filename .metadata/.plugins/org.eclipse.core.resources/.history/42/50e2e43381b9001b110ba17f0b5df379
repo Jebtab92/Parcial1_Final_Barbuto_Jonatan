@@ -1,0 +1,22 @@
+/*
+ * Informes.h
+ *
+ *  Created on: May 18, 2021
+ *      Author: jonat
+ */
+
+#ifndef INFORMES_H_
+#define INFORMES_H_
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include "Recaudacion.h"
+#include "Contribuyente.h"
+#include "Biblioteca.h"
+
+int altaRecaudacion(eRecaudacion arrayR[],int *idRecaudacion, int sizeR, eContribuyente arrayC[], int sizeC);
+eRecaudacion cargarDatosRecaudacion(eContribuyente arrayC[], int sizeC);
+int refinanciarRecaudacion(eRecaudacion arrayR[], int sizeR, eContribuyente arrayC[], int sizeC);
+#endif /* INFORMES_H_ */

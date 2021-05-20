@@ -1,0 +1,134 @@
+/*
+ ============================================================================
+ Name        : P1_BarbutoJonatan.c
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include "Contribuyente.h"
+#include "Biblioteca.h"
+#include "Recaudacion.h"
+
+#define SIZE 50
+
+int main(void)
+{
+	setbuf(stdout, NULL);
+	int opcion;
+	int idContribuyente = 999;
+	int idRecaudacion = 99;
+
+	eContribuyente arrayContribuyente[SIZE];
+	inicializarContribuyente(arrayContribuyente, SIZE);
+
+	eRecaudacion arrayRecaudacion[SIZE];
+	inicializarRecaudacion(arrayRecaudacion, SIZE);
+
+	do
+	{
+		Menu();
+		opcion = Get_IntRange("\nIngrese opcion --> ", "Opcion fuera de rango\n", 1, 9, 3);
+		switch(opcion)
+		{
+			case 1:
+			{ // Alta
+				if((altaContribuyente(arrayContribuyente, &idContribuyente, SIZE)) == 1)
+				{
+					printf("\n--Alta Exitosa--\n");
+					system("pause");
+				}
+				else
+				{
+					printf("\n--Alta anulada--\n");
+					system("pause");
+				}
+				break;
+			}
+			case 2:
+			{ // Modificar
+				if(arrayVacioContribuyente(arrayContribuyente, SIZE) == 0)
+				{
+					printf("\n::::.No hay contribuyentes a modificar.::::\n");
+					system("pause");
+				}
+				else
+				{
+					// Aca va funcion modificar
+					if((modificarContribuyente(arrayContribuyente, SIZE)) == 0)
+					{
+						printf("\n--Modificacion fue exitosa--");
+						system("pause");
+					}
+					else
+					{
+						printf("\n--Modificacion Anulada--");
+						system("pause");
+					}
+				}
+				break;
+			}
+			case 3:
+			{ // Baja
+				if(arrayVacioContribuyente(arrayContribuyente, SIZE) == 0)
+				{
+					printf("\n::::.No hay contribuyentes a eliminar.::::\n");
+					system("pause");
+				}
+				else
+				{
+					if(bajaContribuyente(arrayContribuyente, SIZE) == 0)
+					{
+						printf("\n::::.Baja del contribuyente exitosa.::::");
+					}
+					else
+					{
+						printf("\n::::.No se pudo realizar la baja.::::");
+					}
+					// Aca va funcion baja
+				}
+				break;
+			}
+			case 4:
+			{ // Recaudacion Alta
+				break;
+			}
+			case 5:
+			{ // Refinanciar
+				break;
+			}
+			case 6:
+			{ //Saldar
+				break;
+			}
+			case 7:
+			{ //Imprimir contribuyente
+				if(arrayVacioContribuyente(arrayContribuyente, SIZE) == 0)
+				{
+					mostrarContribuyentes(arrayContribuyente, SIZE);
+				}
+				break;
+			}
+			case 8:
+			{ // Imprimir recaudacion
+				if(arrayVacioRecaudacion(arrayRecaudacion, SIZE) == 0)
+				{
+					mostrarContribuyentes(arrayRecaudacion, SIZE);
+				}
+				break;
+			}
+			case 9:
+			{
+				printf("::::.Adios.::::");
+				break;
+			}
+		}
+	}while(opcion != 9);
+	return 0;
+}

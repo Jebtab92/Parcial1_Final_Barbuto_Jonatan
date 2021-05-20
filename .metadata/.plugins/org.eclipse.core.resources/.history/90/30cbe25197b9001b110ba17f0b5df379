@@ -1,0 +1,33 @@
+/*
+ * Recaudacion.h
+ *
+ *  Created on: May 15, 2021
+ *      Author: Jonatan Barbuto
+ */
+
+#ifndef RECAUDACION_H_
+#define RECAUDACION_H_
+#define MAX_CHAR 30
+
+typedef struct
+{
+	int idRecaudacion;
+	int idContribuyente;
+	int mes;
+	char tipo[MAX_CHAR];
+	char estado[MAX_CHAR];
+	float importe;
+	int isEmpty;
+} eRecaudacion;
+
+
+void inicializarRecaudacion(eRecaudacion array[], int size);
+int arrayVacioRecaudacion(eRecaudacion array[], int size);
+int buscarLibreRecaudacion(eRecaudacion array[], int size);
+void mostrarTituloRecaudacion(void);
+void mostrarRecaudacion(eRecaudacion array[], int index);
+void mostrarRecaudaciones(eRecaudacion array[], int size);
+int eRecaudacion_ObtenerID(int *idRecaudacion);
+int buscarIdRecaudacion(eRecaudacion array[], int size, int ID);
+
+#endif /* RECAUDACION_H_ */

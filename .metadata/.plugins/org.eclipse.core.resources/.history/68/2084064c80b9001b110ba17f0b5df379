@@ -1,0 +1,167 @@
+/*
+ * Informes.c
+ *
+ *  Created on: May 18, 2021
+ *      Author: jonat
+ */
+
+#include "Informes.h"
+#define FREE 1
+#define BUSY 0
+
+
+
+eRecaudacion cargarDatosRecaudacion(eContribuyente arrayC[], int sizeC)
+{
+	eRecaudacion auxiliar;
+	int auxId, indexC, auxTipo, auxEstado;
+	int reintentos = 3;
+
+	do
+	{
+		mostrarContribuyentes(arrayC, sizeC);
+		auxId = Get_IntRange("\nIngrese id del contribuyente para la nueva recaudacion --> ", "\nError, reingrese", 1000, 1100, reintentos);
+		indexC = buscarIdContribuyente(arrayC, sizeC, auxId);
+		if(indexC == -1)
+		{
+			printf("\nContribuyente no encontrado\n");
+			reintentos--;
+		}
+		if(reintentos == 1)
+		{
+			break;
+		}
+	}while(indexC == -1);
+
+	if(indexC != -1)
+	{
+		auxiliar.idContribuyente = arrayC[indexC].idContribuyente;
+		auxiliar.mes = Get_IntRange("\nIngrese mes --> ", "\nError, reingrese --> ", 1, 12, 3);
+		auxTipo = Get_IntRange("\nIngrese tipo de recaudacion \n"
+					"1) ARBA\n"
+					"2) IIBB\n"
+					"3) GANANCIAS\n"
+					"Ingrese opcion --> ", "\nError, reingrese --> ", 1, 3, 3);
+		switch(auxTipo)
+		{
+			case 1:
+			{
+				strcpy(auxiliar.tipo,"ARBA");
+				break;
+			}
+			case 2:
+			{
+				strcpy(auxiliar.tipo,"IIBB");
+				break;
+			}
+			case 3:
+			{
+				strcpy(auxiliar.tipo,"GANANCIAS");
+				break;
+			}
+		}
+		auxEstado = Get_IntRange("\nIngrese estado de recaudacion\n"
+						"1) ADEUDADO\n"
+						"2) REFINANCIADO\n"
+						"3) SALDADO\n"
+						"Ingrese opcion --> ", "\nError, reingrese --> ", 1, 3, 3);
+		switch(auxEstado)
+		{
+			case 1:
+			{
+				strcpy(auxiliar.estado,"ADEUDADO");
+				break;
+			}
+			case 2:
+			{
+				strcpy(auxiliar.estado,"REFINANCIADO");
+				break;
+			}
+			case 3:
+			{
+				strcpy(auxiliar.estado,"SALDADO");
+				break;
+			}
+		}
+
+		auxiliar.importe = Get_Float("\nIngrese importe --> ", "\nError, reingrese --> ", 3);
+	}
+	return auxiliar;
+} // Fin cargarDatosRecaudacion
+
+int altaRecaudacion(eRecaudacion arrayR[],int *idRecaudacion, int sizeR, eContribuyente arrayC[], int sizeC)
+{
+	int rtn = 0;
+	int index;
+	eRecaudacion auxRecaudacion;
+	auxRecaudacion.importe = 0;
+
+	index = buscarLibreRecaudacion(arrayR, sizeR);
+
+	if(index != -1)
+	{
+		auxRecaudacion = cargarDatosRecaudacion(arrayC, sizeC);
+
+		if(auxRecaudacion.importe != 0)
+		{
+			if(Validate_Exit_SN("Desea continuar Si[s] - No[n] --> ", "Error, reingrese --> ", 3) == 1)
+			{
+				auxRecaudacion.idRecaudacion = eRecaudacion_ObtenerID(&*idRecaudacion);
+				auxRecaudacion.isEmpty = BUSY;
+				arrayR[index] = auxRecaudacion;
+				rtn = 1;
+				mostrarTituloRecaudacion();
+				mostrarRecaudacion(arrayR, index);
+				system("pause");
+			}
+			else
+			{
+				printf("Alta Cancelada");
+			}
+		}
+	}
+		return rtn;
+} // Fin altaRecaudacion
+
+int refinanciarRecaudacion(eRecaudacion arrayR[], int sizeR, eContribuyente arrayC[], int sizeC)
+{
+	int rtn = 0;
+	int auxIdRec;
+	int indexRec;
+	int auxIdCon;
+	int indexCon;
+
+	//pedir id
+	auxIdRec = Get_IntRange("\nIngrese id de la recaudacion --> ", "\Error, reingrese --> ", 100, 200, 3);
+	indexRec = buscarIdRecaudacion(arrayR, sizeR, auxIdRec);
+	auxIdCon = arrayR[indexRec].idContribuyente;
+	indexCon = buscarIdContribuyente(arrayC, sizeC, auxIdCon);
+
+	//imprimir contribuyente
+	if(indexRec != -1 && indexCon != -1)
+	{
+		mostrarTituloContribuyente();
+		mostrarContribuyente(arrayC, indexCon);
+
+		if(strcmp(arrayR[indexRec].estado, "REFINANCIADO") == 0)
+		{
+			if(Validate_Exit_SN("Desea continuar Si[s] - No[n] --> ", "Error, reingrese --> ", 3) == 1)
+			{
+				strcpy(arrayR[indexRec].estado, "REFINANCIADO");
+				printf("\n--Refinanciado exitosamente--\n");
+				system("pause");
+			}
+		}
+		else
+		{
+			printf("\n--Esta recaudacion ya se encuentra refinanciada--\n");
+			system("pause");
+		}
+	}
+	else
+	{
+		printf("\n--Refinanciacion anulada (Verifique ids ingresados)--\n");
+		system("pause");
+	}
+	return rtn;
+}

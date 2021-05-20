@@ -1,0 +1,7 @@
+19:41:52 **** Incremental Build of configuration Debug for project P1_BarbutoJonatan ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Biblioteca.o" "..\\src\\Biblioteca.c" 
+gcc -o P1_BarbutoJonatan.exe "src\\Biblioteca.o" "src\\Contribuyente.o" "src\\Informes.o" "src\\P1_BarbutoJonatan.o" "src\\Recaudacion.o" 
+
+19:41:53 Build Finished. 0 errors, 0 warnings. (took 727ms)
+

@@ -1,0 +1,23 @@
+22:24:34 **** Incremental Build of configuration Debug for project Estructuras ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\Estructuras.o" "..\\src\\Estructuras.c" 
+..\src\Estructuras.c: In function 'main':
+..\src\Estructuras.c:54:25: warning: unused variable 'lista' [-Wunused-variable]
+  struct datosPersonales lista[3];
+                         ^~~~~
+..\src\Estructuras.c:51:19: warning: unused variable 'agenda2' [-Wunused-variable]
+  datosPersonales2 agenda2;
+                   ^~~~~~~
+..\src\Estructuras.c:48:51: warning: unused variable 'amigos' [-Wunused-variable]
+  struct datosPersonales agendas[3], contactos[3], amigos[3];
+                                                   ^~~~~~
+..\src\Estructuras.c:48:37: warning: unused variable 'contactos' [-Wunused-variable]
+  struct datosPersonales agendas[3], contactos[3], amigos[3];
+                                     ^~~~~~~~~
+..\src\Estructuras.c:48:25: warning: unused variable 'agendas' [-Wunused-variable]
+  struct datosPersonales agendas[3], contactos[3], amigos[3];
+                         ^~~~~~~
+gcc -o Estructuras.exe "src\\Estructuras.o" 
+
+22:24:35 Build Finished. 0 errors, 5 warnings. (took 795ms)
+

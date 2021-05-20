@@ -1,0 +1,27 @@
+/*
+ * Contribuyente.h
+ *
+ *  Created on: May 15, 2021
+ *      Author: Jonatan Barbuto
+ */
+
+#ifndef CONTRIBUYENTE_H_
+#define CONTRIBUYENTE_H_
+#define MAX_CHAR 30
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
+typedef struct
+{
+	int idContribuyente;
+	char nombre[MAX_CHAR];
+	char apellido[MAX_CHAR];
+	char cuil[MAX_CHAR];
+
+} eContribuyente;
+
+
+#endif /* CONTRIBUYENTE_H_ */

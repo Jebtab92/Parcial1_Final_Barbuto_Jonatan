@@ -1,0 +1,68 @@
+/*
+ * Informes.c
+ *
+ *  Created on: May 18, 2021
+ *      Author: jonat
+ */
+
+#include "Informes.h"
+
+eRecaudacion cargarDatosRecaudacion(eContribuyente arrayC[], int sizeC)
+{
+	eRecaudacion auxiliar;
+	int auxId, indexC;
+
+
+	do // idContribuyente
+	{
+		auxId = Get_IntRange("\nIngrese id del contribuyente para la nueva recaudacion --> ", "\nError, reingrese", 1000, 1100, 3);
+		indexC = buscarIdContribuyente(arrayC, sizeC, auxId);
+	}while(indexC == -1);
+
+	// mes
+	auxiliar.mes = Get_IntRange("\nIngrese mes --> ", "\nError, reingrese --> ", 1, 12, 3);
+
+	do // Tipo
+	{
+		Get_OnlyAlphabetString("\nIngrese tipo (ARBA, IIBB, GANANCIAS) --> ", "\nError, reingrese --> ", auxiliar.tipo, MAX_CHAR, 3);
+	}while(auxiliar.tipo != "ARBA" || auxiliar.tipo != "IIBB" || auxiliar.tipo != "GANANCIAS");
+
+	auxiliar.idContribuyente = arrayC[indexC].idContribuyente;
+
+	auxiliar.importe = Get_Float("\nIngrese importe --> ", "\nError, reingrese --> ", 3);
+
+
+	return auxiliar;
+}
+
+int altaRecaudacion(eRecaudacion array[],int *idRecaudacion, int size)
+{
+	int rtn = 0;
+	eRecaudacion auxRecaudacion;
+
+	int index = buscarLibreRecaudacion(array, size);
+
+	if(index != -1)
+	{
+
+			auxRecaudacion = eRecaudacion_CargarDatos();
+
+
+			if(Validate_Exit_SN("Desea continuar Si[s] - No[n] --> ", "Error, reingrese --> "))
+			{
+
+				auxRecaudacion.idRecaudacion = eRecaudacion_ObtenerID(&*idRecaudacion);
+
+				strcpy(auxRecaudacion.estado, "ADEUDADO");
+				auxRecaudacion.isEmpty = BUSY;
+				array[index] = auxRecaudacion;
+
+				rtn = 1;
+			}
+			else
+			{
+				printf("Alta Cancelada");
+			}
+		}
+		return rtn;
+} // Fin altaRecaudacion

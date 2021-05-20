@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="casesensitive" value="false"/>
+		<item key="wholeword" value="false"/>
+		<item key="isRegEx" value="false"/>
+		<item key="selection" value="Publicidad"/>
+		<list key="findhistory">
+			<item value="TAM"/>
+			<item value="Gen"/>
+			<item value="Orquesta"/>
+			<item value="Musico"/>
+			<item value="Producto"/>
+			<item value="fflu"/>
+		</list>
+		<list key="replacehistory">
+			<item value="size"/>
+			<item value="Pantalla"/>
+			<item value="Instrumento"/>
+			<item value="Musico"/>
+			<item value="Orquesta"/>
+		</list>
+	</section>
+</section>

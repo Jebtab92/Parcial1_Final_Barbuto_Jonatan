@@ -1,0 +1,298 @@
+/*
+ * myBiblioteca.c
+ *
+ *  Created on: May 15, 2021
+ *      Author: Jonatan Barbuto
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#include "myBiblioteca.h"
+
+#define SIZE 30
+
+int Get_IntRange(char msj[], char error_msj[], int *pNum, int min, int max, int retries)
+{
+	int auxNum;
+	int rtn = -1;
+
+	do
+	{
+		printf("\n%s", msj);
+		fflush(stdin);
+
+		if(scanf("%d", &auxNum) == 1 && auxNum >= min && auxNum <= max)
+		{
+			*pNum = auxNum;
+			rtn = 0;
+			break;
+		}
+		else
+		{
+			printf("\n%s", error_msj);
+			retries --;
+		}
+
+
+	}while(retries > 0);
+
+	return rtn;
+}
+
+void Get_Cuil(char msj[], char error_msj[], char *pString, int size)
+{
+	char buffer[SIZE];
+	printf("%s", msj);
+	fflush(stdin);
+	gets(buffer);
+
+	while(strlen(buffer) > size || strlen(buffer) == 0 || Validate_Cuit(buffer) == 0)
+	{
+		if(strlen(buffer) > size || strlen(buffer) == 0)
+		{
+			printf("Error, fuera de rango -> Caracteres [MIN] = 1 [MAX] = %d \n", size);
+		}
+		else
+		{
+			printf("Error, solo formato [XX-XXXXXXXX-X] \n");
+		}
+
+		printf("%s", error_msj);
+		fflush(stdin);
+		gets(buffer);
+	}
+
+	strcpy(pString, buffer);
+}
+
+int Validate_Cuit(char pData[])
+{
+	int rtn = 1;
+	int i;
+	int contadorDigito=0;
+	int contadorGuion=0;
+
+	if(pData!=NULL)
+	{
+		for(i=0; i < strlen(pData);i++)
+		{
+			if(isdigit(pData[i]) != 0)
+			{
+				contadorDigito++;
+			}
+			if(pData[i] == '-')
+			{
+				contadorGuion++;
+			}
+		}
+		if(contadorDigito >= 10 && contadorGuion == 2)
+		{
+			rtn = 1;
+		}
+		else
+		{
+			rtn = 0;
+		}
+	}
+	return rtn;
+}
+
+int Validate_OnlyNumberInt(char pData[])
+{
+	int rtn = 1;
+
+	if(strlen(pData) > 0)
+	{
+		for(int i = 0; i < strlen(pData); i++)
+		{
+			if(isdigit(pData[i]) == 0)
+			{
+				if(i == 0)
+				{
+					if(pData[0] != '-')
+					{
+						rtn = 0;
+						break;
+					}
+				}
+				else
+				{
+					rtn = 0;
+					break;
+				}
+			}
+		}
+	}
+	else
+	{
+		rtn = 0;
+	}
+
+	return rtn;
+}
+
+int Get_NumberFloatRange(char msj[], char error_msj[], float *pNum, float min, float max, int retries)
+{
+	float auxNum;
+	int rtn = -1;
+
+	do
+	{
+		printf("\n%s", msj);
+		fflush(stdin);
+
+		if(scanf("%f", &auxNum) == 1 && auxNum >= min && auxNum <= max)
+		{
+			*pNum = auxNum;
+			rtn = 0;
+			break;
+		}
+		else
+		{
+			printf("\n%s", error_msj);
+			retries --;
+		}
+
+
+	}while(retries > 0);
+
+	return rtn;
+}
+
+int Get_Float(char msj[], char error_msj[], float *pNum, int retries)
+{
+	float auxNum;
+	int rtn = -1;
+
+	do
+	{
+		printf("\n%s", msj);
+		fflush(stdin);
+
+		if(scanf("%f", &auxNum) == 1)
+		{
+			*pNum = auxNum;
+			rtn = 0;
+			break;
+		}
+		else
+		{
+			printf("\n%s", error_msj);
+			retries --;
+		}
+
+
+	}while(retries > 0);
+
+	return rtn;
+}
+
+
+int Get_Int(char msj[], char error_msj[], int *pNum, int retries)
+{
+	int auxNum;
+	int rtn = -1;
+
+	do
+	{
+		printf("\n%s", msj);
+		fflush(stdin);
+
+		if(scanf("%d", &auxNum) == 1)
+		{
+			*pNum = auxNum;
+			rtn = 0;
+			break;
+		}
+		else
+		{
+			printf("\n%s", error_msj);
+			retries --;
+		}
+
+
+	}while(retries > 0);
+
+	return rtn;
+}
+
+int Get_String(char msj[], char error_msj[], char pString[], int retries, int size)
+{
+	char auxString[SIZE];
+	int rtn = -1;
+
+	do
+	{
+		printf("\n%s", msj);
+		fflush(stdin);
+		gets(auxString);
+
+		if(strlen(auxString) < size && strlen(auxString) > 0)
+		{
+			strcpy(pString, auxString);
+			rtn = 0;
+			break;
+		}
+		else
+		{
+			printf("\n%s", error_msj);
+			retries --;
+		}
+
+
+	}while(retries > 0);
+
+	return rtn;
+}
+
+void Get_DNI(char *MSJ, char *ERROR_MSJ, char *pString, int size)
+{
+	char buffer[SIZE];
+
+	printf("%s", MSJ);
+	fflush(stdin);
+	gets(buffer);
+
+	while(strlen(buffer) > 8 || strlen(buffer) < 7 || Validate_OnlyNumberInt(buffer) == 0)
+	{
+		printf("%s", ERROR_MSJ);
+		fflush(stdin);
+		gets(buffer);
+	}
+
+	strcpy(pString, buffer);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void Menu(void)
+{
+	printf("\n::::.Menu Principal.::::\n"
+			"1) Alta de contribuyente\n"
+			"2) Modificar datos del contribuyente\n"
+			"3) Baja de contribuyente\n"
+			"4) Recaudacion\n"
+			"5) Refinanciar recaudacion\n"
+			"6) Saldar recaudacion\n"
+			"7) Imprimir contribuyentes\n"
+			"8) Imprimir recaudacion\n"
+			"9) Salir\n");
+}
